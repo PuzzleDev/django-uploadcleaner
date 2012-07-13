@@ -14,5 +14,7 @@ of folders. If that is not defined settings.MEDIA_ROOT
 is used instead. 
         
 Usage: clean_obsolete_uploads [dryrun] [backup]
+
 dryrun: only list obsolete files without deleting them
+
 backup: create a zip file with all the obsolete files
