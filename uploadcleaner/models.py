@@ -129,7 +129,7 @@ class UploadCleanerLog(models.Model):
     """ Stores the log of each clean.
     """
     timestamp = models.DateTimeField(
-            auto_add_now = True,
+            auto_now_add = True,
             verbose_name = _("Timestamp"),
             help_text = _("When this clean up was performed."))
 
