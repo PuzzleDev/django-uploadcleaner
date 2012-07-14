@@ -1,4 +1,5 @@
 '''
+Copyright PuzzleDev s.n.c.
 Created on Jul 14, 2012
 
 @author: Michele Sama (m.sama@puzzledev.com)
@@ -15,7 +16,8 @@ def ensure_dir(filename):
     dirname = os.path.dirname(filename)
     if not os.path.isdir(dirname):
         os.makedirs(dirname)
-
+        
+        
 def files_at_path(media_folder):
     """ List all the files in the given path and in all 
         of its subfolders.

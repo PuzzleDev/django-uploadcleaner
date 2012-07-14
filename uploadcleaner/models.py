@@ -76,8 +76,7 @@ class UploadCleanerLogManager(models.Manager):
             filter those files which are linked by the database
             and those which are in the log directory.
         """
-        return [x 
-                for x in files_on_filesystem
+        return [x for x in files_on_filesystem
                 if x not in files_on_db]
         
             
@@ -98,7 +97,7 @@ class UploadCleanerLogManager(models.Manager):
             deleting them.
         """
         for filename in files:
-            print "dryrun: %s" % filename  
+            print("dryrun: %s" % filename)
 
 
     def delete_obsolete_files(self, files, instance):
