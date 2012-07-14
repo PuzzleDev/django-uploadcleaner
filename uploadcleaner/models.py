@@ -98,7 +98,7 @@ class UploadCleanerLogManager(models.Manager):
             deleting them.
         """
         for filename in files:
-            print "dryrun: %s" % filename  
+            print("dryrun: %s" % filename)
 
 
     def delete_obsolete_files(self, files, instance):
