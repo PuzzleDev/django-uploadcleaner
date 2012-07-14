@@ -23,14 +23,6 @@ def _log_file_name(model_instance, filename):
             filename)
     return (new_file)
 
-def _backup_file_name(model_instance, filename):
-    #f_name, ext = os.path.splitext(filename)
-    new_file = "%s/%s/%s" % (
-            model_instance._meta.module_name,
-            model_instance.timestamp,
-            filename)
-    return (new_file)
-
 
 class UploadCleanerLogManager(models.Manager):
     
@@ -90,7 +82,8 @@ class UploadCleanerLogManager(models.Manager):
         
             
     def create_backup(self, files, instance):
-        backup_filename = _backup_file_name(instance, "backup.zip")
+        backup_filename = _log_file_name(instance,
+                "backup.zip")
         backup = ZipFile(backup_filename,"w")
         for filename in files:
             backup.write(filename)
@@ -110,10 +103,8 @@ class UploadCleanerLogManager(models.Manager):
         """ Delete all the obsolete files and save
             their name in a log file.
         """
-        log_filename = os.path.join(
-                self.log_folder + 
-                datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S") +
-                ".log")
+        log_filename = _log_file_name(instance,
+                "deleted_files.log")
         
         log = open(log_filename, "w")
         for filename in files:
@@ -149,7 +140,7 @@ class UploadCleanerLog(models.Model):
     backup_file = models.FileField(
             blank = True,
             null = True,
-            upload_to = _backup_file_name, 
+            upload_to = _log_file_name, 
             verbose_name = _("Backup file"),
             help_text = _("The backup file."))
     
