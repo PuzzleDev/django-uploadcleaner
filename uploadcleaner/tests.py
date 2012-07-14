@@ -17,7 +17,7 @@ class UploadCleanerLogManagerTestCase(TestCase):
     def testFilterLinkedFiles(self):
         to_keep = ["a", "b", "c"]
         to_delete =  ["x", "y", "z"]
-        all_files = to_delete + to_delete
+        all_files = to_keep + to_delete
         
         deleted = UploadCleanerLogManager()\
                 .filter_linked_files(all_files, to_keep)
