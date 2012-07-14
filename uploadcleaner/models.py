@@ -4,7 +4,6 @@ Created on Jul 14, 2012
 @author: Michele Sama (m.sama@puzzledev.com)
 '''
 import os
-import datetime
 from zipfile import ZipFile
 
 from django.conf import settings
@@ -84,6 +83,8 @@ class UploadCleanerLogManager(models.Manager):
     def create_backup(self, files, instance):
         backup_filename = _log_file_name(instance,
                 "backup.zip")
+        os.makedirs(os.path.dirname(backup_filename))
+        
         backup = ZipFile(backup_filename,"w")
         for filename in files:
             backup.write(filename)
@@ -105,6 +106,7 @@ class UploadCleanerLogManager(models.Manager):
         """
         log_filename = _log_file_name(instance,
                 "deleted_files.log")
+        os.makedirs(os.path.dirname(log_filename))
         
         log = open(log_filename, "w")
         for filename in files:
