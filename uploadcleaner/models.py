@@ -10,12 +10,12 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from uploadcleaner.utils import linked_files_from_all_models, files_at_path
+from uploadcleaner.utils import linked_files_from_all_models, files_at_path,\
+        ensure_dir
 from django.db.utils import DEFAULT_DB_ALIAS
 
 
 def _log_file_name(model_instance, filename):
-    #f_name, ext = os.path.splitext(filename)
     new_file = "%s/%s/%s" % (
             model_instance._meta.module_name,
             model_instance.timestamp,
@@ -83,7 +83,7 @@ class UploadCleanerLogManager(models.Manager):
     def create_backup(self, files, instance):
         backup_filename = _log_file_name(instance,
                 "backup.zip")
-        os.makedirs(os.path.dirname(backup_filename))
+        ensure_dir(backup_filename)
         
         backup = ZipFile(backup_filename,"w")
         for filename in files:
@@ -106,7 +106,7 @@ class UploadCleanerLogManager(models.Manager):
         """
         log_filename = _log_file_name(instance,
                 "deleted_files.log")
-        os.makedirs(os.path.dirname(log_filename))
+        ensure_dir(log_filename)
         
         log = open(log_filename, "w")
         for filename in files:

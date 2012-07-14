@@ -9,6 +9,12 @@ from django.db import models
 from django.db.models.fields.files import FileField
 from django.db.models import loading
 
+def ensure_dir(filename):
+    """ Creates the given folder if it does not exist.
+    """
+    dirname = os.path.dirname(filename)
+    if not os.path.isdir(dirname):
+        os.makedirs(dirname)
 
 def files_at_path(media_folder):
     """ List all the files in the given path and in all 
