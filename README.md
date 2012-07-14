@@ -25,3 +25,7 @@ Usage: clean_obsolete_uploads [dryrun] [backup]
 The best way to use clean_obsolete_uploads is to set up a 
 cron job to execute it regularly. The admin interface
 show all the cleanups.
+
+
+Note: this software is distribute with no warranty at all.
+Use it at your own risk.
