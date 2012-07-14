@@ -8,7 +8,7 @@ Created on Jul 14, 2012
 
 from distutils.core import setup
 
-setup(name = 'uploadcleaner',
+setup(name = 'django-puzzledev-uploadcleaner',
       version = '1.0',
       author = "Michele Sama",
       author_email = "m.sama@puzzledev.com",
