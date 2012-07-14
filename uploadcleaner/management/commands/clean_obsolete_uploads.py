@@ -1,4 +1,5 @@
 '''
+Copyright PuzzleDev s.n.c.
 Created on Sep 23, 2011
 
 @author: Michele Sama (m.sama@puzzledev.com)
