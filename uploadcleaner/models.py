@@ -135,7 +135,7 @@ class UploadCleanerLog(models.Model):
 
     dryrun = models.BooleanField(
             blank = True,
-            null = True,
+            default = False,
             verbose_name = _("Dry-run"),
             help_text = _("Performs a dry run"))
     
