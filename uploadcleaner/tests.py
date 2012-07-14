@@ -4,18 +4,12 @@ Created on Jul 14, 2012
 
 @author: Michele Sama (m.sama@puzzledev.com)
 '''
-from django.test.testcases import TestCase
-from uploadcleaner.models import UploadCleanerLog, UploadCleanerLogManager
-from django.db import models
-from uploadcleaner.utils import filefields_in_model, linked_files_from_model
+from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
+from django.test.testcases import TestCase
 
-class NoFileModel(models.Model):
-    name = models.SlugField()
-    
-class FileModel(NoFileModel):
-    file = models.FileField(upload_to = "")
-    image = models.ImageField(upload_to = "")
+from uploadcleaner.models import UploadCleanerLog, UploadCleanerLogManager
+from uploadcleaner.utils import filefields_in_model, linked_files_from_model
 
 
 class UploadCleanerLogManagerTestCase(TestCase):
@@ -33,9 +27,9 @@ class UploadCleanerLogManagerTestCase(TestCase):
 class UtilsTestCase(TestCase):
         
     def testFileFieldsInModel(self):
-        self.assertEqual([], filefields_in_model(NoFileModel))
-        self.assertEqual(['file', 'image'],
-                [x.name for x in filefields_in_model(FileModel)])
+        self.assertEqual([], filefields_in_model(User))
+        self.assertEqual(['log_file', 'backup_file'],
+                [x.name for x in filefields_in_model(UploadCleanerLog)])
         
     def testLinkedFilesForModel(self):
         instance = UploadCleanerLog.objects.create()
