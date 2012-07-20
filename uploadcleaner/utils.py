@@ -40,9 +40,8 @@ def filefields_in_model(model_class):
                 "Given class %s does not extend from Model."
                 % model_class)
     
-    fields = model_class._meta.fields
     fields = [x
-            for x in fields
+            for x in model_class._meta.fields
             if isinstance(x, FileField)]
     return fields 
 
