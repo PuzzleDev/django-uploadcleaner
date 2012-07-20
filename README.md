@@ -17,10 +17,10 @@ Files are loaded from a settings.MEDIA_FOLDER_LIST list
 of folders. If that is not defined settings.MEDIA_ROOT
 is used instead. 
         
-Usage: clean_obsolete_uploads [dryrun] [backup]
+Usage: `clean_obsolete_uploads [dryrun] [backup]`
 
-"dryrun" only list obsolete files without deleting them, 
-"backup" create a zip file with all the obsolete files.
+`dryrun` only list obsolete files without deleting them, 
+`backup` create a zip file with all the obsolete files.
 
 The best way to use clean_obsolete_uploads is to set up a 
 cron job to execute it regularly. The admin interface
